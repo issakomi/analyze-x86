@@ -1,7 +1,6 @@
 /*      analyze-x86
  *
- *      Copyright 2010 Meya Argenta <fierevere@ya.ru>
- *      Copyright 2012 Alexey Shvetsov <alexxy@gentoo.org>
+ *      Copyright 2016 Ivan Shapovalov <intelfx100@gmail.com>
  *
  *      This program is free software; you can redistribute it and/or modify
  *      it under the terms of the GNU General Public License as published by
@@ -19,20 +18,40 @@
  *      MA 02110-1301, USA.
  */
 
-#include "486.h"
-#include "586.h"
-#include "686.h"
-#include "mmx.h"
-#include "sse.h"
-#include "sse2.h"
-#include "3dnow.h"
-#include "3dnowext.h"
-#include "sse3.h"
-#include "ssse3.h"
-#include "sse41.h"
-#include "sse42.h"
-#include "sse4a.h"
-#include "aes.h"
-#include "pclmul.h"
-#include "avx.h"
-#include "bmi.h"
+/*
+ * https://en.wikipedia.org/wiki/Bit_Manipulation_Instruction_Sets
+ */
+
+static const char *setbmi[] = {
+	"andn",
+	"bextr",
+	"blsi",
+	"blsmsk",
+	"blsr",
+	"tzcnt",
+	NULL
+};
+
+static const char *setbmi2[] = {
+	"bzhi",
+	"mulx",
+	"pdep",
+	"pext",
+	"rorx",
+	"sarx",
+	"shrx",
+	"shlx",
+	NULL
+};
+
+static const char *settbm[] = {
+	"blcfill",
+	"blci",
+	"blcic",
+	"blcs",
+	"blsfill",
+	"blsic",
+	"t1mskc",
+	"tzmsk",
+	NULL
+};

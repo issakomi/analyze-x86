@@ -61,6 +61,9 @@ struct insn_class
 	{ .name = "aes", .insns = setaes },
 	{ .name = "avx", .insns = setavx },
 	{ .name = "avx2", .insns = setavx2 },
+	{ .name = "bmi", .insns = setbmi },
+	{ .name = "bmi2", .insns = setbmi2 },
+	{ .name = "tbm", .insns = settbm },
 	{ }
 };
 
