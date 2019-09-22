@@ -48,13 +48,16 @@ struct insn_class
 	{ .name = "i486", .insns = set486 },
 	{ .name = "i586", .insns = set586 },
 	{ .name = "i686", .insns = set686 },
+#if 0
 	{ .name = "3dnow!", .insns = set3dnow },
 	{ .name = "3dnowext", .insns = set3dnowext },
+#endif
 	{ .name = "mmx", .insns = setmmx },
 	{ .name = "sse", .insns = setsse },
 	{ .name = "sse2", .insns = setsse2 },
 	{ .name = "sse3", .insns = setsse3 },
 	{ .name = "ssse3", .insns = setssse3 },
+	{ .name = "popcnt", .insns = setpopcnt },
 	{ .name = "sse4.1", .insns = setsse41 },
 	{ .name = "sse4.2", .insns = setsse42 },
 	{ .name = "sse4a", .insns = setsse4a },

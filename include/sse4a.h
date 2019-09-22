@@ -22,9 +22,7 @@
 static const char *setsse4a[] = {
 	"extrq",
 	"insertq",
-	"lzcnt",
 	"movntsd",
 	"movntss",
-	"popcnt",
 	NULL
 };

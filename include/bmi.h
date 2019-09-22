@@ -1,6 +1,6 @@
 /*      analyze-x86
  *
- *      Copyright 2016 Ivan Shapovalov <intelfx100@gmail.com>
+ *      Copyright 2019 Mihail Isakov <mihail.isakov@gmail.com>
  *
  *      This program is free software; you can redistribute it and/or modify
  *      it under the terms of the GNU General Public License as published by
@@ -20,15 +20,35 @@
 
 /*
  * https://en.wikipedia.org/wiki/Bit_Manipulation_Instruction_Sets
+ *
+ *
+ * ABM (Advanced Bit Manipulation):
+ * popcnt
+ * lzcnt
+ *
+ * All AMD processors support both instructions or neither.
+ * Intel considers POPCNT as part of SSE4.2 and LZCNT as part of BMI1,
+ * POPCNT has a separate CPUID flag; however, Intel uses AMD's
+ * ABM flag to indicate LZCNT support.
+ * 
  */
+
+static const char *setpopcnt[] = {
+	"popcnt",
+	NULL
+};
 
 static const char *setbmi[] = {
 	"andn",
-	"bextr",
+	"bextr", // with register
 	"blsi",
 	"blsmsk",
 	"blsr",
+	/*
+	https://stackoverflow.com/questions/43880227/why-does-tzcnt-work-for-my-sandy-bridge-processor
+	"lzcnt",
 	"tzcnt",
+	*/
 	NULL
 };
 
@@ -45,6 +65,7 @@ static const char *setbmi2[] = {
 };
 
 static const char *settbm[] = {
+	"bextr", // with immediate
 	"blcfill",
 	"blci",
 	"blcic",
